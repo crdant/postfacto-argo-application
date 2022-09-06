@@ -1,16 +1,13 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
   name: postfacto-redis
-  namespace: argocd
+  namespace: postfacto
 spec:
   encryptedData:
     redis-password: AgBLM2cZV73eZO9rz9uxC142uGyq5EG2enEWFxskacEFDwcpxxUOZDuFpwBajNQAczAaOXKyqWFkXuJVH6KnS8xKYlWQYfFihEBJZ11rh3KbAEJbcewusX33rDKdNPuB1W1MRf22xnrc1y98m45b9x6I5wr17LHDXxThhaiz6tE8xXHIdZxUkewhcC7nf3AVJLxNnQZkoL2Rtjyr8CO38j07xajWCMZj3DZzQUzNgONZ4GzG15TV+TCL3im/COTv27kcOdRG1CnBH9+SpBjlT7mXy0f4kghhUZ7l8JXj3simnnsBAp1qwM0UNyiWLiWI8kMXQTJNIZE2DI4FmhlzSwCX7d0kS9tPU++OErhg778OSh0ND69AmQN+X1/G42hgJkxSh1CTvq1W+zonAybPPiGg4lpinSnc7ZTPUsy/fqkUWHan8RNzGN4u+sWtYGXvfGSHvnJG0GbPTSCPiQDTryjszO6K5waRDaGNlS9xuPkeTgIK9WRM0McI39T27tiOKsgyfZnpIkDkDsezqiaqF9yKHpJGZErODZS5ZXUS0vfNyYuGoEXs1d4sjIA8EaMbz1CCbyD7/PHXTfxKGBWkoAc5jdrYiJS9VPqXgT3tOFUAMDlCNHMxZ9VpnJbZm78GXbSSiojPlYHB54nOQ48NhV9GufvQjuzMislAiuL81YM//7bIsXyYJmt1dUWk8A1ZrTsAaenvwj94wat+dargU+e0y2Hl3U+Tkf4ndCM55Y/A4mvcJ/S58c8=
   template:
-    data: null
     metadata:
-      creationTimestamp: null
       name: postfacto-redis
       namespace: argocd
 
