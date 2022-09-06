@@ -16,6 +16,9 @@ spec:
         global:
           postgresql:
             auth:
+              enablePostgresUser: false
+              username: postfacto
+              database: postfacto
               existingSecret: postfacto-postgresql
       redis:
         auth:
