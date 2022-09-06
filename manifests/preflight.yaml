@@ -21,10 +21,13 @@ spec:
         - bash
         - -c 
         - |
+          # little bit of a hack since the exit code for `preflight` is not an indicator
+          # as to whether there were any failures
           preflight oci://registry.shortrib.io/postfacto-marlin/development --interactive=false --format json \
             --server https://kubernetes.default.svc:6443 --certificate-authority /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
             --token $(cat /var/run/secrets/kubernetes.io/serviceaccount/token) | grep -q "fail"
-          test ! $? 
+          # since we looked for failure, we need to invert the result by comparing to 0
+          test $? -ne 0 
           exit $?
         volumeMounts:
         - mountPath: /home/preflight/.docker
