@@ -12,7 +12,7 @@ spec:
     repoURL: registry.shortrib.io
     targetRevision: 0.1.0-SNAPSHOT
   destination:
-    namespace: postfacto
+    namespace: argocd
     server: https://kubernetes.default.svc
   syncPolicy:
     automated:
