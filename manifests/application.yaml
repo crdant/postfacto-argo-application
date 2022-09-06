@@ -12,7 +12,7 @@ spec:
     repoURL: registry.shortrib.io
     targetRevision: 0.1.0-SNAPSHOT
     helm:
-      values:
+      values: |
         postgresql:
           global:
             postgresql:
