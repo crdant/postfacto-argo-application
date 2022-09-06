@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: preflight-check
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsUser: 1001
+        runAsGroup: 1001
+      serviceAccountName: argocd-preflight-check
+      containers:
+      - name: check
+        image: replicated/preflight
+        env:
+        - name: HOME
+          value: /home/preflight
+        command:
+        - bash
+        - -c 
+        - |
+          preflight oci://registry.shortrib.io/postfacto-marlin/development --interactive=false --format json \
+            --server https://kubernetes.default.svc:6443 --certificate-authority /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+            --token $(cat /var/run/secrets/kubernetes.io/serviceaccount/token) | grep -q "fail"
+          test ! $? 
+          exit $?
+        volumeMounts:
+        - mountPath: /home/preflight/.docker
+          name: registry-credentials
+          readOnly: true
+      volumes:
+      - name: registry-credentials
+        secret:
+          secretName: preflight-registry-credentials
+          items:
+          - key: .dockerconfigjson
+            path: config.json
+      restartPolicy: Never
