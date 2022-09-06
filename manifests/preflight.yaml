@@ -38,3 +38,4 @@ spec:
           - key: .dockerconfigjson
             path: config.json
       restartPolicy: Never
+  backoffLimits: 0
