@@ -12,18 +12,8 @@ spec:
     repoURL: registry.shortrib.io
     targetRevision: 0.1.0-SNAPSHOT
     helm:
-      values: |
-        postgresql:
-          global:
-            postgresql:
-              auth:
-                enablePostgresUser: false
-                username: postfacto
-                database: postfacto
-                existingSecret: postfacto-postgresql
-        redis:
-          auth:
-            existingSecret: postfacto-redis
+      valueFiles:
+      - values.yaml
   destination:
     namespace: postfacto
     server: https://kubernetes.default.svc
