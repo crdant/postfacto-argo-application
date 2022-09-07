@@ -3,6 +3,9 @@ kind: SealedSecret
 metadata:
   name: postfacto-repository
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook: PreSync
 spec:
   encryptedData:
     enableOCI: AgBJyfIpBQ101rdwP6cu6V92b49WTat/FfAVTkRrHKo8x02rSvTrZv9FafPbzOxwdWRAX1cUNY9C2ZC0xAX6HtY5laT3IEX4Gi3aGqdTs+BIBPGTh8lo7PCGXaNg3/l7vq/aKbxrX7frn8C+2B0vaow/x1wgj/mxDhA292OpVjCfC/c/ktliBoZXKWapRoFRLnIq1IWQbPtZl1kvlYlQwtOIpHH+zS/dr0joY+wkkzuQa+wXv/WFaeVVJpWjbCNekyXXVsUM24s1y3astSLgU6XY2JqgC5ImXZsXNnYLUZFKpXDsbVeHDm25aIUGU+DtyLwLTmz64ntKdHSijkgpLVbS7pU9CU93JPBoOXoSAk4Suj0QZfKTPwA2BUwTCSXKkr3EiwExvSlyCj081VImyQx7cuOeWMdaqeQr0urPvKQhmdDHqXgo4CSZmFdSU/9leaFwC99tbcz7yyouJVVRNIHw/Gv+0CuC0xp4/nc/5b0kf47Fum2mYbcRbUNay51gtMuPTEeFr794XgUm7zE2A7Oz/BBMPOuVNmhjrq0UI5Z0gpof8dLa9vgeEp9//UXVt3aVsUyzt3g/hw8CqSOjQgg+S6J8XOLa3onBHmtYTMTxka3/nJEyQlNyNoNGjtadXQgr3oRxE0lr1jMHZTlBnv0jIpCtprjRhcNyR93zskWMHhH3O3Y9vIWq1W7bJxDqZ1g4h+aR
