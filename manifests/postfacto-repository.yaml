@@ -2,8 +2,10 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: postfacto-repository
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook: PreSync
 spec:
   encryptedData:
     enableOCI: AgCo9gulm7dzCWnqbmNKoxymgn2dPWlAhft6lTFP+5d3WER71N3ecCqLyzYr/sariOK26eah6x5plpN8oTfTTs6IMYGYEVBkSAW9wjsmAC4n9rY9pUVbSDMHD4astwyU6Kv9H/J/D+2MoGiabHElejUYoxU574X+9lWQ74J0N4fZmejpRHCGP4raFnhPGZWS+mnWDk9MNofZY4Mk3/v4vEQDnBwXnIblm5vV1N0G4cay6WhslVRPn+Tf0v8PSdiLelVWcstNRr+DpuNI+oocsO2Dc+o534+bdzhLJPIHOwCnarskl9+0DInFdkFtIH9gRFY0TJsQjniCm1cLugBT7ycdwLR58Q1BCDdiLzDglg4GqOPH8dqaZqYc+T7STHnQdJXIQZJbV89snRaDdvlIoAOOqOVDYPbNY+RWEMM6PO2nHyMAiagVkKRFq4r3zeJxTiqhXJgDpUjXbO5kSxnv0+wDGWEvAb7XUxB3HtR2rHjSnA6eVQm1ay5FQzYcPzL15X2o5G1aWIoO0rZLe9Q8YAiPUOuPk7QDt64ah3umMRNhNAk4B7g2IgDUg2Vp9psil1uca7BZABnuxmaZOlZELOjIXfJK+4nxsR5vy8mJqs/c26R/XUR8TcX0b3Gj53ob6xC/4cIwj356JWxsk2bBqyfH+vy+y5jL2ZFxGEsdo55k3oVjO2wS7S0AwXdHhg3k9USBwxE7
