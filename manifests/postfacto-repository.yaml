@@ -1,7 +1,6 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  creationTimestamp: null
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
@@ -14,9 +13,7 @@ spec:
     url: AgA63CCETibS65aPprkPAnn0oIwNN+lQkib08Lb0SVCQfJuQnw9WNl3bSa4MLaYB6jRe0vHtwaMDK7u5bK0w1CCmZnwtJkgJCuprByEq4RtM/Bj+0gXDN3T4K8nxkBXN1cJtzGsS3PtcJhlcR0DMfR45dIPLeQhFiKbMb+9+/7EkCUTWq6sO07NdaHWNZGoLTE4XqgVSwKY71SsxrnYqpe1JlHuH30WQG1R8yHo6dc2kU0DMJ6mWoQePryD+/MOLE60X2cvwySf3MJPw62YmCG3+H6E2e7j5j77viUosfK4sCJ9wppk2i/T1NEtB9+x1k6sU0VYtfgbqHFfyaftbM7YqoajR48268Qq8BFMB9Sbch9xgcUbcafmkmgNszQUPcIA08pQrrFlFHm+HU5DAusjnB8/ceAcg48YPg6dwhc4KdODHeRdQr0GLVSEteGqyE8O7TgZjckCHF+lJSQRgVih50rgJYHnm3pnKAX5zZS9gQNGZwVPgNxfCHSorgVsQ+aC+m+sIH/9gJlbvPdsCb5aPiHvNKU6om4Ri27WxKCluKUcO47WKO/u39byqv2zEc50M9NbbloSvXTtuqjK7/3PNiIHbMvhs4/tVLGEbkm+DRemfm9P+apnVsUSVNeR47EoPDEaRBxMVCsyUS7sFHBg20R+3luJcqcxq3Jy1KyrIDUJy30gRSsptA10dmKQvBZpGQTDWr1TAWfZAKy/85CSEQ3oM8LRKp4jztG+YK211Kv0iwrAV4O7PdeaTERbMT+kgdZT3lBMekRIdKbFHUtsndw==
     username: AgC1/0VmYcPwRqHXs2szv0y3ux2481Dn9/ZCjAq1/g6525oG3ZhvIW/Y5ATd8RUxjBfRu3oduykd/UlX+UmC6NkpnlDw7fnVVtReFlzptqL5WH0wqHS+6JFG8l0oJkMyKjA1DlN/Zum9MQ/8P2B97xGP2pON5pahi/zoo4BvdTrjYAEJ9ToyBiQHYphszFDJpQqT08tmJ0BxIJZJPwCXEl9yuTnMope5c0HPheoxkiMqVaO3uRKaYMMOH65mWQc3ZWnirdz0Op8KZiwHfEbZZzAqM5ZIULrAbRWvRCZGuxdTXZG1g1l7Sy89PKjG+2MiQoaz1NKa3VHcL6vE65Dy5uYA475TGi6QhDZtQbHZ6SipKCQz3i806NUeq0RS1YTc6bGBndsrmxFx6hURVukHlLsBVhOeCr3/54iLhgYylIRZaeatFveMt09WJBc91ZmQQNSPBaVYtDN3VTA/DVJ2/UwH4eJI52DiNOuyvP4fOeQEtK7xe9UxLZLANl7N2bGjFLYqzRsym318li7ik+53spm2EF8eZKc1C8QpSGyuObCUWfH5qVPgLs63PIgUUYJLGjNfT39HYwYdi7HwIpjcFQk+OPcW8qIXIw9K0b9EoKWOhjUljaui+aaW3KJ0LKd/RgLx4x+qNu99m1kaQmeB0vPGdzPCnZ4KSfo5dbjFuj7ZlV+gm4CFRXcBf4NmtFx1CUEbG/WbrbfMty/lOIX+HOpa0Dw=
   template:
-    data: null
     metadata:
-      creationTimestamp: null
       name: postfacto-repository
       namespace: argocd
     type: Opaque
