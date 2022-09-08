@@ -18,4 +18,5 @@ spec:
       creationTimestamp: null
       name: postfacto-repository
       namespace: argocd
-
+      labels:
+        argocd.argoproj.io/secret-type: repository
