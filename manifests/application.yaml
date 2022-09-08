@@ -11,7 +11,6 @@ spec:
     chart: postfacto-marlin/development/postfacto
     repoURL: registry.shortrib.io
     targetRevision: 0.1.0-SNAPSHOT
-    path: manifests
     helm:
       values: |
         postgresql:
