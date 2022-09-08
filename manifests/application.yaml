@@ -15,10 +15,11 @@ spec:
       values: |
         postgresql:
           auth:
-            enablePostgresUser: false
+            # enablePostgresUser: false
             username: postfacto
             database: postfacto
             existingSecret: postfacto-postgresql
+            usePasswordFiles: true
         redis:
           auth:
             existingSecret: postfacto-redis
