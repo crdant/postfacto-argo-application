@@ -22,8 +22,6 @@ spec:
         redis:
           auth:
             existingSecret: postfacto-redis
-              valueFiles:
-              - values.yaml
   destination:
     namespace: postfacto
     server: https://kubernetes.default.svc
