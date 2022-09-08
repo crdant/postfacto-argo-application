@@ -13,13 +13,26 @@ spec:
     targetRevision: 0.1.0-SNAPSHOT
     helm:
       values: |
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/tls-acme: "true"
+            projectcontour.io/websocket-routes: "/"
+            ingress.kubernetes.io/force-ssl-redirect: "true"
+          hosts:
+          - host: postfacto.shortrib.run
+            paths:
+            - /
+          tls:
+          - hosts:
+            - postfacto.shortrib.run
+            secretName: postfacto-cert 
         postgresql:
           auth:
-            # enablePostgresUser: false
+            enablePostgresUser: false
             username: postfacto
             database: postfacto
             existingSecret: postfacto-postgresql
-            usePasswordFiles: true
         redis:
           auth:
             existingSecret: postfacto-redis
