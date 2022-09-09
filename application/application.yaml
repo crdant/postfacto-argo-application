@@ -3,7 +3,8 @@ kind: Application
 metadata:
   name: postfacto
   namespace: argocd
-
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 # needs values that are set in the postfacto-replicated HelmChart CR
 spec:
   project: default
@@ -13,7 +14,6 @@ spec:
     targetRevision: 0.1.0-SNAPSHOT
     helm:
       values: |
-
         ingress:
           enabled: true
           annotations:
