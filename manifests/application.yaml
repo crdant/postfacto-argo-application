@@ -13,6 +13,7 @@ spec:
     targetRevision: 0.1.0-SNAPSHOT
     helm:
       values: |
+
         ingress:
           enabled: true
           annotations:
@@ -38,7 +39,7 @@ spec:
             existingSecret: postfacto-redis
   destination:
     namespace: postfacto
-    server: https://kubernetes.default.svc
+    server: https://10.24.1.67:6443
   syncPolicy:
     automated:
       prune: true
