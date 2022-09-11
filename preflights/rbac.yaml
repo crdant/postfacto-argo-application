@@ -3,6 +3,7 @@ kind: ServiceAccount
 metadata:
   creationTimestamp: null
   name: preflight-check
+  namespace: postfacto
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 ---
@@ -37,7 +38,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: preflight-check:preflight-checks
+  name: postfacto:preflight-check:preflight-checks
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 roleRef:
@@ -47,3 +48,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: preflight-check
+  namespace: postfacto
