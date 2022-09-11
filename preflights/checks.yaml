@@ -8,7 +8,7 @@ spec:
       securityContext:
         runAsUser: 1001
         runAsGroup: 1001
-      serviceAccountName: argocd-preflight-check
+      serviceAccountName: preflight-check
       containers:
       - name: check
         image: replicated/preflight
