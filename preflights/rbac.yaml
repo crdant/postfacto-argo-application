@@ -2,8 +2,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   creationTimestamp: null
-  name: argocd-preflight-check
-  namespace: argocd
+  name: preflight-check
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 ---
@@ -38,8 +37,7 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  creationTimestamp: null
-  name: argocd:argocd-preflight-check:preflight-checks
+  name: preflight-check:preflight-checks
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
 roleRef:
@@ -48,5 +46,4 @@ roleRef:
   name: preflight-checks
 subjects:
 - kind: ServiceAccount
-  name: argocd-preflight-check
-  namespace: argocd
+  name: preflight-check
