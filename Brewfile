@@ -1,1 +1,2 @@
 brew 'kubeseal'
+brew 'argocd'
