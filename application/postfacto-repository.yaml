@@ -4,7 +4,7 @@ metadata:
   name: postfacto-repository
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   encryptedData:
     enableOCI: AgBkScusmsFjaXqZtXxu+uhGWByflyYgxFdEaYo18qgRl62Ac3Wq8mDLvZZfLJMUlbPvK4BBffmQU5cZT0k6Nmg6r3MAc815jhr6ZBVAN73hs0GIhMm1r2ERNCn61Ss+DWcOgKkZOpVO58hmwVc+K+dRrsAk/GLhkXDSjaV6sjtJMQp+1K3sA/Uf0eVcVP1sMqipQRApr6pHoLb+kwbYQ18s7ncBwEqDXnQiSF/3+sxt+42X+JqhodR2sGRBAF6HUkh4eDCmlNej4p4My+EAFDebwaFz3EkHEaHXog59/+mjyV1W+dJ1Qd8SXplmwXEo4N2yUIFU06QBYIT0L/WekWsE0WRvN2twh2lsYZTb3PoEnNKO1+hM0erFb1gTyB6gsV3MJIQw9IboGJdheQbSM0MYXuGhFWVCYFNpqpBTKU5HXBhgx+i2AVuCJGuCzzMQbVqASpy1JU/d2clRP8nq86NY/Dh7I4T45AO0NcglHAMjYxbLw2ApBk4OqKTze1hznDiukQ19DGCq1/n2CFWxpOcPhs4VRcxfdKYVTqzaq67xy3utLBW17d5c1NwbgKM+ciW6kvxrrMAd7hom4g2C2jhr1YrMqxU1TKIyJ/tWbDMUgmOjWFq5KffTbg0EirEN9Y2TQfBpYquqe989xlWSO+Xn36gadDVAGW77g1h2z3mP8Z7m7wY2f9clCoHjXTsq+95XOTnl
