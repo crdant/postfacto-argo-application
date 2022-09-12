@@ -8,7 +8,21 @@ spec:
       securityContext:
         runAsUser: 1001
         runAsGroup: 1001
-      serviceAccountName: preflight-check
+      initContainers:
+      - name: format-credentials
+        image: nixery.dev/shell/jq
+        command:
+        - bash
+        - -c
+        - |
+          jq -r '.bearerToken' /var/run/secrets/argocd.io/cluster/config > /var/run/secrets/postfacto.io/cluster/token
+          jq -r '.tlsClientConfig.caData | @base64d' /var/run/secrets/argocd.io/cluster/config > /var/run/secrets/postfacto.io/cluster/ca.crt
+        volumeMounts:
+        - mountPath: /var/run/secrets/argocd.io/cluster
+          name: argo-cluster-credentials
+          readOnly: true
+        - mountPath: /var/run/secrets/postfacto.io/cluster
+          name: cluster-credentials
       containers:
       - name: check
         image: replicated/preflight
@@ -22,8 +36,8 @@ spec:
           # little bit of a hack since the exit code for `preflight` is not an indicator
           # as to whether there were any failures
           preflight oci://registry.shortrib.io/postfacto-marlin/development --interactive=false --format json \
-            --server https://kubernetes.default.svc:6443 --certificate-authority /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
-            --token $(cat /var/run/secrets/kubernetes.io/serviceaccount/token) | grep -q "fail"
+            --server https://10.24.1.67:6443 --certificate-authority /var/run/secrets/postfacto.io/cluster/ca.crt \
+            --token $(cat /var/run/secrets/postfacto.io/cluster/token) | grep -q "fail"
           # since we looked for failure, we need to invert the result by comparing to 0
           test $? -ne 0 
           exit $?
@@ -31,6 +45,8 @@ spec:
         - mountPath: /home/preflight/.docker
           name: registry-credentials
           readOnly: true
+        - mountPath: /var/run/secrets/postfacto.io/cluster
+          name: cluster-credentials
       volumes:
       - name: registry-credentials
         secret:
@@ -38,5 +54,10 @@ spec:
           items:
           - key: .dockerconfigjson
             path: config.json
+      - name: argo-cluster-credentials
+        secret:
+          secretName: cluster-10.24.1.67-2488001778
+      - name: cluster-credentials
+        emptyDir: {}
       restartPolicy: Never
   backoffLimit: 0
