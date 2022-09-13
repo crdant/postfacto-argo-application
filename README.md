@@ -40,3 +40,23 @@ deliver this demo.
   _(alpha feature)_.
 * ArgoCD [resource hooks](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)
   to assure that my preflight checks run before the application installs.
+
+## Running the demonstration
+
+To run the demonstration, you will need to fork this repository.
+I hate having to ask you that, but it's required since my cluster
+address and sealed secrets woon't work with your repository. You'll
+customize these and commit them to your fork.
+
+You'll also need two Kubernetes clusters, one with ArgoCD installed
+and another to deploy the application. I had the clusters already 
+configured using [TKG Lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab) 
+and it's [optional ArgoCD lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab/blob/main/docs/bonus-labs/argocd-kustomize.md).
+A later revision will enable setting those clusters up with 
+[kurl](https://kurl.sh).
+
+You'll also need to have the Postfacto application available as
+a Replicated KOTS application. Contact me for a license to use
+my release, or you can use my [chart](https://github.com/crdant/postfacto-chart)
+and [application](https://github.com/crdant/postfacto-replicated) with your
+own [vendor account](https://vendor.replicated.com).
