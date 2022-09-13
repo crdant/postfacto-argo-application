@@ -3,7 +3,8 @@ kind: Application
 metadata:
   name: postfacto
   namespace: argocd
-
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 # needs values that are set in the postfacto-replicated HelmChart CR
 spec:
   project: default
@@ -20,12 +21,12 @@ spec:
             projectcontour.io/websocket-routes: "/"
             ingress.kubernetes.io/force-ssl-redirect: "true"
           hosts:
-          - host: postfacto.shortrib.run
+          - host: postfacto.shortrib.app
             paths:
             - /
           tls:
           - hosts:
-            - postfacto.shortrib.run
+            - postfacto.shortrib.app
             secretName: postfacto-cert 
         postgresql:
           auth:
@@ -38,7 +39,7 @@ spec:
             existingSecret: postfacto-redis
   destination:
     namespace: postfacto
-    server: https://kubernetes.default.svc
+    server: https://10.24.1.67:6443
   syncPolicy:
     automated:
       prune: true
