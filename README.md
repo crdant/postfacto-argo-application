@@ -1,15 +1,15 @@
-# GitOps with ArgoCD, Helm, and Replicated KOTS
+# GitOps with Argo CD, Helm, and Replicated KOTS
 
 This repository contains the code and configuration needed to 
 demonstrate GitOps deployment of a [KOTS](https://kots.io) 
-app with [ArgoCD](https://argo-cd.readthedocs.io/en/stable/).
+app with [Argo CD](https://argo-cd.readthedocs.io/en/stable/).
 
 ## Scenario
 
 The demonstration considers a context in which a team is using
 Replicated KOTS to distribute their application and a customer
-requires a GitOps deployment using ArgoCD. The current 
-iteration assumes that ArgoCD is running in a different cluster
+requires a GitOps deployment using Argo CD. The current 
+iteration assumes that Argo CD is running in a different cluster
 from the workload, but works with a single cluster as well. A
 simpler single cluster version is at the tag 
 [`single-cluster-demo`](https://github.com/crdant/postfacto-argo-application/releases/tag/single-cluster-demo).
@@ -25,7 +25,7 @@ The new chart also helped me externalize some secrets so I
 could use [sealed secrets](https://github.com/bitnami-labs/sealed-secrets)
 in this repo. 
 
-I've combined a few different features of Replicated and ArgoCD to 
+I've combined a few different features of Replicated and Argo CD to 
 deliver this demo.
 
 * Preflight checks built with [Troubleshoot](https://troubleshoot.sh) 
@@ -38,7 +38,7 @@ deliver this demo.
   _(alpha feature)_.
 * Replicated support for [installing with Native Helm](https://docs.replicated.com/vendor/helm-installing-native-helm)
   _(alpha feature)_.
-* ArgoCD [resource hooks](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)
+* Argo CD [resource hooks](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)
   to assure that my preflight checks run before the application installs.
 
 ## Running the demonstration
@@ -55,10 +55,10 @@ and [`yq`](https://github.com/mikefarah/yq#install), and might also
 want the [`argocd`](https://argo-cd.readthedocs.io/en/stable/getting_started/#2-download-argo-cd-cli)
 CLI though I'm not using it explicitly in the demonstration.
 
-You'll also need two Kubernetes clusters, one with ArgoCD installed
+You'll also need two Kubernetes clusters, one with Argo CD installed
 and another to deploy the application. I had the clusters already 
 configured using [TKG Lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab) 
-and it's [optional ArgoCD lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab/blob/main/docs/bonus-labs/argocd-kustomize.md).
+and it's [optional Argo CD lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab/blob/main/docs/bonus-labs/argocd-kustomize.md).
 A later revision will enable setting those clusters up with 
 [kurl](https://kurl.sh). If it's not already there, add 
 [sealed secrets](https://github.com/bitnami-labs/sealed-secrets) to
@@ -106,7 +106,7 @@ otherwise follow the instructions for each CLI:
    ```
 
 5. Recreate the secrets used to access the Replicated registry. These secrets should be 
-   sealed for the cluster running ArgoCD.
+   sealed for the cluster running Argo CD.
    
    You'll need the username, password, and server address for the registry. If you're 
    using your own vendor account, create a customer license and get the username, password, 
@@ -166,7 +166,7 @@ tell Argo to do it's thing, showing the progress as it goes.
    watch kubectl get --context $WORKLOAD_CLUSTER_CONTEXT --namespace postfacto all,ns
    ```
 
-2. Open a browser window to the application tiles on your ArgoCD installation.
+2. Open a browser window to the application tiles on your Argo CD installation.
 
    ![Argo CD before installation](assets/02-argocd-before-install.png)
 
