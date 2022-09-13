@@ -53,10 +53,18 @@ and another to deploy the application. I had the clusters already
 configured using [TKG Lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab) 
 and it's [optional ArgoCD lab](https://github.com/Tanzu-Solutions-Engineering/tkg-lab/blob/main/docs/bonus-labs/argocd-kustomize.md).
 A later revision will enable setting those clusters up with 
-[kurl](https://kurl.sh).
+[kurl](https://kurl.sh). You'll also need to add 
+[sealed secrets](https://github.com/bitnami-labs/sealed-secrets) to
+both of your clusters.
 
-You'll also need to have the Postfacto application available as
+The last thing you'll need is access to the Postfacto application as
 a Replicated KOTS application. Contact me for a license to use
 my release, or you can use my [chart](https://github.com/crdant/postfacto-chart)
-and [application](https://github.com/crdant/postfacto-replicated) with your
-own [vendor account](https://vendor.replicated.com).
+and [application](https://github.com/crdant/postfacto-replicated) to roll with 
+your own with a [vendor account](https://vendor.replicated.com) from 
+Replicated.
+
+### Steps
+
+At a high-level, you're going to fork this repo, make sure the manifests
+refer to your fork, reseal your secrets, and tell Argo to do it's thing.
