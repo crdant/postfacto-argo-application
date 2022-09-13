@@ -4,6 +4,8 @@ This repository contains the code and configuration needed to
 demonstrate GitOps deployment of a [KOTS](https://kots.io) 
 app with [Argo CD](https://argo-cd.readthedocs.io/en/stable/).
 
+[![GitOps with ArgoCD, Helm, and Replicated KOTS](https://cdn.loom.com/sessions/thumbnails/ac49e6b90b3c4e61b8e910afd12d4b66-with-play.gif)](https://www.loom.com/share/ac49e6b90b3c4e61b8e910afd12d4b66 "GitOps with ArgoCD, Helm, and Replicated KOTS")
+
 ## Scenario
 
 The demonstration considers a context in which a team is using
