@@ -168,7 +168,7 @@ tell Argo to do it's thing, showing the progress as it goes.
 
 2. Open a browser window to the application tiles on your ArgoCD installation.
 
-   ![Argo CD before installation](assets/02-argocd-before-installation.png)
+   ![Argo CD before installation](assets/02-argocd-before-install.png)
 
 3. Start the installation.
 
