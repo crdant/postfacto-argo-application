@@ -95,14 +95,14 @@ otherwise follow the instructions for each CLI:
 
    ```
    yq -i '.spec.source.repoURL = "$FORKED_REPO_URL" application/secrets.yaml
-   yq -i '.spec.destination.server = "$WORKLOAD_CLUSTER_ENDPOINT"' application/secrets.yaml 
+   yq -i '.spec.destination.server = "$WORKLOAD_ENDPOINT"' application/secrets.yaml 
    ```
 
 4. Update the manifest for the Postfacto application so that it references
    your destination cluster:
 
    ```
-   yq -i '.spec.destination.server = "$WORKLOAD_CLUSTER_ENDPOINT"' application/application.yaml 
+   yq -i '.spec.destination.server = "$WORKLOAD_ENDPOINT"' application/application.yaml 
    ```
 
 5. Recreate the secrets used to access the Replicated registry. These secrets should be 
@@ -115,13 +115,14 @@ otherwise follow the instructions for each CLI:
 
    ```
    # to enable accesss to the preflight checks
-   kubectl create secret docker-registry preflight-registry-credentials --dry-run=client -o yaml -n argocd \
-       --docker-username $REGISTRY_USERNAME --docker-password $REGISTRY_PASSWORD --docker-server $REGISTRY_SERVER \
+   kubectl create secret docker-registry preflight-registry-credentials \
+       --dry-run=client -o yaml -n argocd --docker-username $REGISTRY_USERNAME 
+       --docker-password $REGISTRY_PASSWORD --docker-server $REGISTRY_SERVER \
      | kubeseal -n argocd > application/preflight-registry-credentials.yaml
 
    # to enable access to the HElm chart
-   kubectl create secret generic postfacto-repository --dry-run=client -o yaml -n argocd \
-       --from-literal=enableOCI=true --from-literal=username=$REGISTRY_USERNAME \
+   kubectl create secret generic postfacto-repository --dry-run=client -o yaml \
+       -n argocd --from-literal=enableOCI=true --from-literal=username=$REGISTRY_USERNAME \
        --from-literal=password=$REGISTRY_PASSWORD --from-literal=url=$REGISTRY_SERVER \
        --from-literal=type=helm --from-literal=name=postfacto \
      | kubeseal -n argocd -o yaml > application/postfacto-repository.yaml
@@ -136,12 +137,13 @@ otherwise follow the instructions for each CLI:
    kubectl create ns postfacto
 
    # create secret for the postgres database
-   kubectl create secret generic postfacto-postgresql -n postfacto --dry-run=client -o yaml \
-       --from-literal=postgres-password=$(petname -w 5) --from-literal=password=$PASSWORD_FOR_POSTGRES \
+   kubectl create secret generic postfacto-postgresql -n postfacto \
+       --dry-run=client -o yaml --from-literal=postgres-password=$ADMIN_PASSWORD \
+       --from-literal=password=$USER_PASSWORD \
      | kubeseal -n postfacto -o yaml  > secrets/postfacto-postgresql.yaml   
    # create secret for the redis cluster
-   kubectl create secret generic postfacto-redis --dry-run=client -o yaml -n postfacto \
-       --from-literal=redis-password=$PASSWORD_FOR_REDIS \
+   kubectl create secret generic postfacto-redis -n postfacto \
+       --dry-run=client -o yaml --from-literal=redis-password=$PASSWORD_FOR_REDIS \
      | kubeseal -n postfacto -o yaml > secrets/postfacto-redis.yaml
 
    # delete the postfacto namespace so we can show Argo creating it
