@@ -25,7 +25,19 @@ spec:
           readOnly: true
         - mountPath: /var/run/secrets/postfacto.io/cluster
           name: cluster-credentials
-      containers:
+      - name: helm-template
+        image: nixery.dev/shell/kubernetes-helm
+        command:
+        - bash
+        - -c
+        - |
+          helm template oci://registry.shortrib.io/postfacto-marlin/development > /var/run/manifests/postfacto.io/manifests/postfacto.yaml
+        - mountPath: /home/preflight/.docker
+          name: registry-credentials
+          readOnly: true
+        - mountPath: /var/run/manifests/postfacto.io/manifests
+          name: manifests
+       containers:
       - name: check
         image: replicated/preflight
         env:
@@ -37,7 +49,7 @@ spec:
         - |
           # little bit of a hack since the exit code for `preflight` is not an indicator
           # as to whether there were any failures
-          helm template oci://registry.shortrib.io/postfacto-marlin/development | preflight --interactive=false --format json \
+          cat /var/run/manifests/postfacto.io/manifests/postfacto.yaml | preflight --interactive=false --format json \
             --server https://10.24.1.67:6443 --certificate-authority /var/run/secrets/postfacto.io/cluster/ca.crt \
             --token $(cat /var/run/secrets/postfacto.io/cluster/token) | grep -q "fail"
           # since we looked for failure, we need to invert the result by comparing to 0
@@ -49,6 +61,9 @@ spec:
           readOnly: true
         - mountPath: /var/run/secrets/postfacto.io/cluster
           name: cluster-credentials
+        - mountPath: /var/run/manifests/postfacto.io/manifests
+          name: manifests
+          readOnly: true
       volumes:
       - name: registry-credentials
         secret:
@@ -60,6 +75,8 @@ spec:
         secret:
           secretName: cluster-squirrel.lab.shortrib.net-1535139613
       - name: cluster-credentials
+        emptyDir: {}
+      - name: manifests
         emptyDir: {}
       restartPolicy: Never
   backoffLimit: 0
