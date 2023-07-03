@@ -25,25 +25,9 @@ spec:
           readOnly: true
         - mountPath: /var/run/secrets/postfacto.io/cluster
           name: cluster-credentials
-      - name: helm-template
-        image: nixery.dev/shell/kubernetes-helm
-        env:
-        - name: HOME
-          value: /home/preflight
-        command:
-        - bash
-        - -c
-        - |
-          helm template oci://registry.shortrib.io/postfacto-marlin/development/postfacto --version 0.1.0-SNAPSHOT > /var/run/manifests/postfacto.io/manifests/postfacto.yaml
-        volumeMounts:
-        - mountPath: /home/preflight/.docker
-          name: registry-credentials
-          readOnly: true
-        - mountPath: /var/run/manifests/postfacto.io/manifests
-          name: manifests
       containers:
       - name: check
-        image: replicated/preflight
+        image: ghcr.io/crdant/postfacto-argo-application/toolkit-image@sha256:487277df6957c4eb4a77815bb27a5169a1543449c2e8698e844d3983c25456e6
         env:
         - name: HOME
           value: /home/preflight
