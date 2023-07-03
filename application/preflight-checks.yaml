@@ -32,6 +32,7 @@ spec:
         - -c
         - |
           helm template oci://registry.shortrib.io/postfacto-marlin/development > /var/run/manifests/postfacto.io/manifests/postfacto.yaml
+        volumeMounts:
         - mountPath: /home/preflight/.docker
           name: registry-credentials
           readOnly: true
