@@ -42,6 +42,8 @@ spec:
         - mountPath: /home/preflight/.docker
           name: registry-credentials
           readOnly: true
+        - mountPath: /home/preflight/.cache
+          name: cache
         - mountPath: /var/run/secrets/postfacto.io/cluster
           name: cluster-credentials
         - mountPath: /var/run/manifests/postfacto.io/manifests
@@ -58,6 +60,8 @@ spec:
         secret:
           secretName: cluster-squirrel.lab.shortrib.net-1535139613
       - name: cluster-credentials
+        emptyDir: {}
+      - name: cache 
         emptyDir: {}
       - name: manifests
         emptyDir: {}
