@@ -39,7 +39,7 @@ spec:
           helm template oci://registry.shortrib.io/postfacto-marlin/development/postfacto --version 0.1.0-SNAPSHOT \
             | kubectl preflight - --interactive=false --format json \
                 --server https://squirrel.lab.shortrib.net:6443 --certificate-authority /var/run/secrets/postfacto.io/cluster/ca.crt \
-                --client-certificate /var/run/secrets/postfacto.io/cluster/client.crt --client-key /var/run/secrets/postfacto.io/cluster/ca.crt 
+                --client-certificate /var/run/secrets/postfacto.io/cluster/client.crt --client-key /var/run/secrets/postfacto.io/cluster/client.key
         volumeMounts:
         - mountPath: /home/preflight/.docker
           name: registry-credentials
