@@ -27,6 +27,9 @@ spec:
           name: cluster-credentials
       - name: helm-template
         image: nixery.dev/shell/kubernetes-helm
+        env:
+        - name: HOME
+          value: /home/preflight
         command:
         - bash
         - -c
