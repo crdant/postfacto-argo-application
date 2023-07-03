@@ -10,8 +10,8 @@ spec:
     targetRevision: feature-separate-clusters
     path: application
   destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
+    namespace: postfacto
+    server: https://squirrel.lab.shortrib.net:6443
   syncPolicy:
     automated:
       prune: true
