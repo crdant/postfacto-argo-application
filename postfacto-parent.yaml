@@ -7,7 +7,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/crdant/postfacto-argo-application.git
-    path: manifests
+    targetRevision: feature-separate-clusters
+    path: application
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
