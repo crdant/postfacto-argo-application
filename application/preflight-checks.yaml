@@ -35,7 +35,7 @@ spec:
         - bash
         - -c 
         - |
-          helm template oci://registry.shortrib.io/postfacto-marlin/development/postfacto | kubectl preflight --interactive=false --format json \
+          helm template oci://registry.shortrib.io/postfacto-marlin/development/postfacto --version 0.1.0-SNAPSHOT | kubectl preflight --interactive=false --format json \
             --server https://10.24.1.67:6443 --certificate-authority /var/run/secrets/postfacto.io/cluster/ca.crt \
             --token $(cat /var/run/secrets/postfacto.io/cluster/token) -
         volumeMounts:
